@@ -1,6 +1,7 @@
 import { getCategories, getNews } from "@/lib/data";
 import Leftside from "@/page-components/Leftside";
 import NewsCard from "@/page-components/NewsCard";
+import NoNews from "@/page-components/NoNews";
 import RightSide from "@/page-components/RightSide";
 
 const CategoryNews = async ({ params }) => {
@@ -17,8 +18,11 @@ const CategoryNews = async ({ params }) => {
       </div>
       <div className="col-span-6">
         <h2 className="font-semibold text-2xl">Latest News</h2>
-
-        <NewsCard news={news} id={id}></NewsCard>
+        {news.length > 0 ? (
+          <NewsCard news={news} id={id}></NewsCard>
+        ) : (
+          <NoNews></NoNews>
+        )}
       </div>
       <div className="col-span-3">
         <RightSide></RightSide>

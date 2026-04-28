@@ -2,20 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { FaEye, FaRegBookmark, FaStar } from "react-icons/fa";
-import { IoIosEye } from "react-icons/io";
+
 import { IoShareSocialOutline } from "react-icons/io5";
 
 const NewsCard = ({ news, id }) => {
   return (
     <div className="p-1 space-y-3">
       {news.map((n) => (
-        <div key={n._id} className="border border-gray-100 rounded my-5 ">
+        <div key={n._id} className="border border-gray-200 rounded my-5 ">
           <div className="flex justify-between items-center bg-base-200 p-4 rounded">
             <div className="flex gap-3 items-center">
               <Image
                 className="rounded-full"
                 src={n.author.img}
-                alt={n.author.name}
+                alt="author image"
                 width={50}
                 height={50}
               />
@@ -41,7 +41,7 @@ const NewsCard = ({ news, id }) => {
               height={300}
             ></Image>
             <p className="line-clamp-3">{n.details}</p>
-            <Link href={`/news/${id}`}>
+            <Link href={`/news/${n._id}`}>
               <button className="font-bold btn btn-md bg-red-400 text-white ">
                 Read More
               </button>
