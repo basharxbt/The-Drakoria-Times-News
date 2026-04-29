@@ -9,6 +9,16 @@ import { IoShareSocialOutline } from "react-icons/io5";
 import RightSide from "@/page-components/RightSide";
 import { BiLeftArrow } from "react-icons/bi";
 
+export const generateMetadata = async ({ params }) => {
+  const { id } = await params;
+
+  const news = await getNewsById(id);
+  console.log(news[0].title, "news in meta");
+  return {
+    title: news[0].title,
+  };
+};
+
 const page = async ({ params }) => {
   const { id } = await params;
   const news = await getNewsById(id);

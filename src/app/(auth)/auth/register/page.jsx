@@ -21,9 +21,39 @@ const LoginPage = () => {
     <div className="container mx-auto h-[80vh] flex items-center justify-center bg-slate-100 my-5">
       <div className="w-full md:w-1/2 lg:w-1/3 bg-white p-8 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold mb-4 text-center">
-          Login Your Account
+          Register Your Account
         </h2>
         <form onSubmit={handleSubmit(handleLogin)}>
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend text-xl">Your name </legend>
+            <input
+              type="text"
+              className="input bg-slate-100 rounded-sm border-none w-full"
+              placeholder="Enter your name"
+              {...register("name", { required: "Name field is required" })}
+            />
+            {errors.name && (
+              <span className="text-red-700 font-semibold">
+                {errors.name.message}
+              </span>
+            )}
+          </fieldset>
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend text-xl">Photo url </legend>
+            <input
+              type="text"
+              className="input bg-slate-100 rounded-sm border-none w-full"
+              placeholder="Enter your photo URL"
+              {...register("photoUrl", {
+                required: "Photo URL field is required",
+              })}
+            />
+            {errors.photoUrl && (
+              <span className="text-red-700 font-semibold">
+                {errors.photoUrl.message}
+              </span>
+            )}
+          </fieldset>
           <fieldset className="fieldset">
             <legend className="fieldset-legend text-xl">Email address </legend>
             <input
@@ -62,12 +92,9 @@ const LoginPage = () => {
           <button className="btn btn-block btn-neutral my-4">Login</button>
 
           <p className="text-center">
-            Don’t Have An Account ?{" "}
-            <Link
-              href="/auth/register"
-              className="text-red-500 hover:underline"
-            >
-              Register
+            Already Have An Account ?
+            <Link href="/auth/login" className="text-blue-600 hover:underline">
+              Login
             </Link>
           </p>
         </form>

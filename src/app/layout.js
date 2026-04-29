@@ -12,6 +12,11 @@ const poppins = Poppins({
 //   subsets: ["latin"],
 // });
 
+export const metadata = {
+  title: "Drakoria Times",
+  description: "Your source for the latest news in Drakoria",
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${poppins.variable} h-full antialiased`}>
